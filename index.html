@@ -5,51 +5,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Погода</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@animxyz/core">
 </head>
 
 <body>
     <header>
-        <p>Погода в городе Karagandy</p>
+        <nav>
+            <input placeholder="Введите название города" type="text" id="input-id" value="Караганда" />
+            <button id="input_submit" onclick="submit()">Найти</button>
+        </nav>
     </header>
-    <nav>
-        <p>Поиск города: </p><input placeholder="Введите название города" type="text" id="input-id" />
-        <button id="input_submit" onclick="submit()">Найти</button>
-    </nav>
     <main>
         <article>
             <h1 id="city"></h1>
-            <p id="temp"> </p>
-            <p id="description"></p>
-            <p id="temp_max_min"></p>
+            <p class="temp" id="temp"> </p>
+            <p class="description" id="description"></p>
+            <p class="temp_max_min" id="temp_max_min"></p>
         </article>
         <div class="section_direction" class="item-group"
             xyz="wide-5 thick-5 tall-5 small-5 perspective-5 origin-center duration delay-2 .5 ease-out-back stagger-4 direction">
             <section class="square xyz-out">
                 <p>Восход солнца</p>
-                <p id="sunrise"></p>
+                <p class="date" id="sunrise"></p>
+                <img src="/img/sunrise-up-svgrepo-com.svg" alt="" />
             </section>
             <section class="square xyz-out">
                 <p> Ветер</p>
-                <p id="wind"></p>
+                <p class="date" id="wind"></p>
+                <img src="/img/wind.png" alt="" />
             </section>
             <section class="square xyz-out">
-                <p> Ощущается как</p>
-                <p id="feels_like"></p>
+                <p> Ощущается</p>
+                <p class="date" id="feels_like"></p>
+                <img src="/img/temperature-feels-like-svgrepo-com 1.png" alt="" />
             </section>
             <section class="square xyz-out">
                 <p> Влажность</p>
-                <p id="humidity"></p>
+                <p class="date" id="humidity"></p>
+                <img src="/img/capl.png" alt="" />
             </section>
             <section class="square xyz-out">
                 <p> Видимость</p>
-                <p id="visibility"></p>
+                <p class="date" id="visibility"></p>
+                <img src="/img/visibility-svgrepo-com.svg" alt="" />
             </section>
             <section class="square xyz-out">
-                <p> Давление</p>
-                <p id="grnd_level"></p>
+                <p>Давление гПа</p>
+                <p class="date" id="grnd_level"> </p>
+                <img src="/img/SVGRepo_iconCarrier.png" alt="" />
             </section>
         </div>
     </main>

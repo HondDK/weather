@@ -83,7 +83,7 @@ function drawWeather(data) {
 	).innerHTML = `Максимум ${temp_max}° градуса, Минимум ${temp_min}° градуса`;
 	document.getElementById("humidity").innerHTML = `${humidity}%`;
 	document.getElementById("feels_like").innerHTML = ` ${feels_like}°`;
-	document.getElementById("grnd_level").innerHTML = `${grnd_level} гПа`;
+	document.getElementById("grnd_level").innerHTML = `${grnd_level} `;
 	document.getElementById("description").innerHTML = description;
 	document.getElementById("city").innerHTML = city;
 	document.getElementById("visibility").innerHTML = `${visibility} км`;

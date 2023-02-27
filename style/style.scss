@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300&family=Public+Sans:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300&family=Inter&family=Public+Sans:wght@600&display=swap");
 
 %font-bold {
 	font-family: "Public Sans", sans-serif;
@@ -6,19 +6,23 @@
 %font-light {
 	font-family: "Public Sans", sans-serif;
 }
+%font-inter {
+	font-family: "Inter", sans-serif;
+}
 body {
-	background-color: rgb(32, 33, 36);
-	color: white;
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
 }
 a {
 	text-decoration: none;
-	color: white;
+	color: rgb(0, 0, 0);
 }
 header {
 	@extend %font-bold;
 	font-size: 60px;
 	width: 80%;
 	margin: 0 auto;
+	margin-bottom: 71px;
 	p {
 		text-align: center;
 	}
@@ -26,32 +30,88 @@ header {
 nav {
 	@extend %font-bold;
 	display: flex;
-	font-size: 40px;
+	font-size: 32px;
+	line-height: 39px;
+	font-style: normal;
 	width: 48%;
 	margin: 0 auto;
 	text-align: center;
 	justify-content: space-around;
+	input {
+		@extend %font-bold;
+
+		text-align: center;
+		border-radius: 25px 25px 25px 25px;
+		-webkit-border-radius: 25px 25px 25px 25px;
+		-moz-border-radius: 25px 25px 25px 25px;
+		border: 3px solid rgb(0, 0, 0);
+		width: 300px;
+		height: 80px;
+		font-size: 25px;
+		&:hover {
+			transition: all 0.1s ease;
+			border: rgb(255, 255, 255);
+		}
+	}
+	button {
+		@extend %font-bold;
+		border-radius: 25px 25px 25px 25px;
+		-webkit-border-radius: 25px 25px 25px 25px;
+		-moz-border-radius: 25px 25px 25px 25px;
+		border: 3px solid rgb(0, 0, 0);
+		width: 300px;
+		height: 90px;
+		font-size: 25px;
+		&:hover {
+			transition: all 0.1s ease;
+			border: rgb(255, 255, 255);
+			scale: 1.05;
+		}
+	}
 }
 main {
-	width: 80%;
+	width: 1252px;
+
 	margin: 0 auto;
 	article {
 		margin: 0 auto;
 		width: 300px;
 		height: 300px;
 		text-align: center;
-
+		background-color: #d9d9d9;
 		border-radius: 25px 25px 25px 25px;
 		-webkit-border-radius: 25px 25px 25px 25px;
 		-moz-border-radius: 25px 25px 25px 25px;
 		border: 2px solid white;
 
 		h1 {
-			@extend %font-bold;
-			font-size: 50px;
+			@extend %font-inter;
+			font-size: 32px;
 		}
 		p {
 			@extend %font-light;
+			margin-top: 15px;
+			margin-bottom: 15px;
+		}
+		.description {
+			@extend %font-inter;
+			font-weight: 400;
+			font-size: 23px;
+			line-height: 39px;
+		}
+		.temp {
+			@extend %font-inter;
+			font-style: normal;
+			font-weight: 400;
+			font-size: 64px;
+			line-height: 77px;
+		}
+		.temp_max_min {
+			@extend %font-inter;
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 19px;
 		}
 	}
 	.section_direction {
@@ -59,11 +119,32 @@ main {
 		justify-content: space-around;
 	}
 	section {
+		background-color: #d9d9d9;
+		text-align: center;
+		margin-top: 71px;
 		width: 150px;
 		height: 150px;
 		border-radius: 25px 23px 25px 25px;
 		-webkit-border-radius: 25px 23px 25px 25px;
-		-moz-border-radius: 25px 23px 25px 25px;	
+		-moz-border-radius: 25px 23px 25px 25px;
 		border: 2px solid #ffffff;
+
+		p {
+			@extend %font-inter;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 19px;
+			margin: 15px;
+		}
+		.date {
+			@extend %font-inter;
+			font-weight: 400;
+			font-size: 32px;
+			line-height: 39px;
+		}
+		img {
+			width: 26px;
+			height: 26px;
+		}
 	}
 }
