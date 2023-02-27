@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300&family=Public+Sans:wght@600&display=swap");
+main article h1, nav, header {
+  font-family: "Public Sans", sans-serif;
+}
+
+main article p {
+  font-family: "Public Sans", sans-serif;
+}
+
+body {
+  background-color: rgb(32, 33, 36);
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+header {
+  font-size: 60px;
+  width: 80%;
+  margin: 0 auto;
+}
+header p {
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  font-size: 40px;
+  width: 48%;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: space-around;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+}
+main article {
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  border-radius: 25px 25px 25px 25px;
+  -webkit-border-radius: 25px 25px 25px 25px;
+  -moz-border-radius: 25px 25px 25px 25px;
+  border: 2px solid white;
+}
+main article h1 {
+  font-size: 50px;
+}
+main .section_direction {
+  display: flex;
+  justify-content: space-around;
+}
+main section {
+  width: 150px;
+  height: 150px;
+  border-radius: 25px 23px 25px 25px;
+  -webkit-border-radius: 25px 23px 25px 25px;
+  -moz-border-radius: 25px 23px 25px 25px;
+  border: 2px solid #ffffff;
+}/*# sourceMappingURL=style.css.map */
