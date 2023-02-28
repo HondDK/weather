@@ -1,4 +1,5 @@
 var key = "e671c5b57f027d000fa8db46a63cfd7b";
+var video = document.getElementById("myVideo");
 
 function getCityID() {
 	const cityName = document.querySelector("input").value;
@@ -13,7 +14,7 @@ function getCityID() {
 
 			return cityId;
 		})
-		.catch((error) => console.error(error));
+		.catch();
 }
 
 function weatherBalloon() {
@@ -27,16 +28,15 @@ function weatherBalloon() {
 			})
 			.then(function (data) {
 				console.log(data);
+				document.getElementById("input-id").style.color = "black";
 				drawWeather(data);
 			})
-			.catch(function () {});
+			.catch(
+				(error) => (document.getElementById("input-id").style.color = "red")
+			);
 	});
 }
 
-window.onload = () => {
-	weatherBalloon();
-	console.log();
-};
 function submit() {
 	weatherBalloon();
 }
@@ -53,12 +53,18 @@ function drawWeather(data) {
 	let grnd_level = data.main.grnd_level; // давление
 	let description = data.weather[0].description; // описание погоды
 	let feels_like = toCelc(data.main.feels_like); //как чувствуется
-	let city = data.name;
-	let visibility = data.visibility / 1000;
-	let rain = data.rain;
+	let city = data.name; // город
+	let visibility = data.visibility / 1000; // видимость
+	let rain = data.rain; // дождь
 	let wind = data.wind.gust;
+	if (wind === undefined) {
+		wind = 0;
+	}
+	if (grnd_level === undefined) {
+		grnd_level = 0;
+	}
 
-	let sunrise = new Date(data.sys.sunrise * 1000)
+	let sunrise = new Date(data.sys.sunrise * 1000) // восход солнца и перевод даты в время формата 00:00
 		.toLocaleString()
 		.split("")
 		.slice(12, 17)
@@ -75,17 +81,44 @@ function drawWeather(data) {
 		sunrise,
 		wind
 	);
+
+	var descriptionData = data.weather[0].main.toLowerCase();
+
+	if (descriptionData.includes("rain")) {
+		video.src = "video/rain.mp4";
+	} else if (descriptionData.includes("clouds")) {
+		video.src = "video/clouds.mp4";
+	} else if (descriptionData.includes("snow")) {
+		video.src = "video/snow.mp4";
+	} else if (descriptionData.includes("thunderstorm")) {
+		video.src = "video/thunderstorm.mp4";
+	} else if (descriptionData.includes("mist")) {
+		video.src = "video/mist.mp4";
+	} else if (descriptionData.includes("drizzle")) {
+		video.src = "video/drizzle.mp4";
+	} else if (descriptionData.includes("smoke")) {
+		video.src = "video/smoke.mp4";
+	} else {
+		video.src = "video/sunny.mp4";
+	}
+
 	document.getElementById("sunrise").innerHTML = sunrise;
-	document.getElementById("wind").innerHTML = `${wind} м/c`;
+	document.getElementById("wind").innerHTML = `${Math.round(wind)} `;
 	document.getElementById("temp").innerHTML = `${temp}°`;
 	document.getElementById(
 		"temp_max_min"
-	).innerHTML = `Максимум ${temp_max}° градуса, Минимум ${temp_min}° градуса`;
+	).innerHTML = `Макс: ${temp_max}°, Мин: ${temp_min}°`;
 	document.getElementById("humidity").innerHTML = `${humidity}%`;
 	document.getElementById("feels_like").innerHTML = ` ${feels_like}°`;
 	document.getElementById("grnd_level").innerHTML = `${grnd_level} `;
 	document.getElementById("description").innerHTML = description;
 	document.getElementById("city").innerHTML = city;
-	document.getElementById("visibility").innerHTML = `${visibility} км`;
-	document.getElementById("rain").innerHTML = rain;
+	document.getElementById("visibility").innerHTML = `${Math.round(
+		visibility
+	)} км`;
 }
+
+window.onload = () => {
+	weatherBalloon();
+	console.log();
+};
