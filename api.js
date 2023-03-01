@@ -111,7 +111,7 @@ function drawWeather(data) {
 	document.getElementById("feels_like").innerHTML = ` ${feels_like}°`;
 	document.getElementById("grnd_level").innerHTML = `${grnd_level} `;
 	document.getElementById("description").innerHTML =
-		description.charAt(0).toUpperCase() + description.slice(1); // увеличение первой буквы в описани
+		description.charAt(0).toUpperCase() + description.slice(1); // увеличение первой буквы в описании
 	document.getElementById("city").innerHTML = city;
 	document.getElementById("visibility").innerHTML = `${Math.round(
 		visibility
