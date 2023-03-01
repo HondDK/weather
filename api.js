@@ -1,7 +1,8 @@
 var key = "e671c5b57f027d000fa8db46a63cfd7b"; // ключ для доступа к API
+var video = document.getElementById("myVideo");
 
-// preloader страницы
-window.addEventListener("load", function () {
+// preloader видео
+video.addEventListener("progress", function () {
 	var preloader = document.getElementById("preloader");
 	preloader.style.display = "none";
 });
@@ -120,7 +121,6 @@ function drawWeather(data) {
 
 //прорисовка видео в зависимости от описания погоды
 function drawVideo(data) {
-	var video = document.getElementById("myVideo");
 	var descriptionData = data.weather[0].main.toLowerCase();
 
 	if (descriptionData.includes("rain")) {
