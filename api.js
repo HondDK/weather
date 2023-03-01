@@ -1,12 +1,6 @@
 var key = "e671c5b57f027d000fa8db46a63cfd7b"; // ключ для доступа к API
 var video = document.getElementById("myVideo");
 
-// preloader видео
-video.addEventListener("progress", function () {
-	var preloader = document.getElementById("preloader");
-	preloader.style.display = "none";
-});
-
 // при загрузке страницы вызывается функции вывода погоды
 window.onload = () => {
 	weatherBalloon();
@@ -20,6 +14,10 @@ function clearInput() {
 function submit() {
 	weatherBalloon();
 }
+video.addEventListener("progress", function () {
+	var preloader = document.getElementById("preloader");
+	preloader.style.display = "none";
+});
 
 //Получение айди города через его название
 function getCityID() {
@@ -38,6 +36,8 @@ function getCityID() {
 
 //Получение погоды через его айди
 function weatherBalloon() {
+	// preloader видео
+
 	getCityID().then((cityId) => {
 		console.log(cityId);
 		fetch(
