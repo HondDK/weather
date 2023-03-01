@@ -110,7 +110,8 @@ function drawWeather(data) {
 	document.getElementById("humidity").innerHTML = `${humidity}%`;
 	document.getElementById("feels_like").innerHTML = ` ${feels_like}°`;
 	document.getElementById("grnd_level").innerHTML = `${grnd_level} `;
-	document.getElementById("description").innerHTML = description;
+	document.getElementById("description").innerHTML =
+		description.charAt(0).toUpperCase() + description.slice(1); // увеличение первой буквы в описани
 	document.getElementById("city").innerHTML = city;
 	document.getElementById("visibility").innerHTML = `${Math.round(
 		visibility
