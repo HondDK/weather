@@ -1,14 +1,26 @@
-var key = "e671c5b57f027d000fa8db46a63cfd7b";
+var key = "e671c5b57f027d000fa8db46a63cfd7b"; // ключ для доступа к API
 
+// preloader страницы
 window.addEventListener("load", function () {
 	var preloader = document.getElementById("preloader");
 	preloader.style.display = "none";
 });
 
+// при загрузке страницы вызывается функции вывода погоды
 window.onload = () => {
 	weatherBalloon();
 };
 
+//очищение ввода при нажании на инпут
+function clearInput() {
+	document.getElementById("input-id").value = "";
+}
+// при нажатии на кнопку вызывается функция вывода погоды
+function submit() {
+	weatherBalloon();
+}
+
+//Получение айди города через его название
 function getCityID() {
 	const cityName = document.querySelector("input").value;
 	return fetch(
@@ -23,10 +35,7 @@ function getCityID() {
 		.catch();
 }
 
-function clearInput() {
-	document.getElementById("input-id").value = "";
-}
-
+//Получение погоды через его айди
 function weatherBalloon() {
 	getCityID().then((cityId) => {
 		console.log(cityId);
@@ -44,31 +53,30 @@ function weatherBalloon() {
 			.catch(() => (document.getElementById("input-id").style.color = "red"));
 	});
 }
-
-function submit() {
-	weatherBalloon();
-}
-
+// перевод температуры в цельсии
 function toCelc(n) {
 	return Math.round(parseFloat(n) - 273.15);
 }
 
+//прорисовка элементов на странице
 function drawWeather(data) {
 	let humidity = data.main.humidity; // влажность
 	let temp = toCelc(data.main.temp); // температура в цельсиях
 	let temp_max = toCelc(data.main.temp_max); // максимальная температура
 	let temp_min = toCelc(data.main.temp_min); // минимальная температура
-	let grnd_level = data.main.grnd_level; // давление
 	let description = data.weather[0].description; // описание погоды
 	let feels_like = toCelc(data.main.feels_like); //как чувствуется
 	let city = data.name; // город
 	let visibility = data.visibility / 1000; // видимость
 
-	let wind = data.wind.gust;
+	let wind = data.wind.gust; // ветер и проверка на получаемые данные погоды если undefined возвращает 0
 	if (wind === undefined) {
 		wind = 0;
 	}
+
+	let grnd_level = data.main.grnd_level; // давление
 	if (grnd_level === undefined) {
+		//давление и проверка на получаемые данные погоды если undefined возвращает 0
 		grnd_level = 0;
 	}
 
@@ -78,19 +86,20 @@ function drawWeather(data) {
 		.slice(12, 17)
 		.join("");
 
-	console.log(
-		humidity,
-		temp,
-		grnd_level,
-		description,
-		feels_like,
-		temp_max,
-		temp_min,
-		sunrise,
-		wind
-	);
+	//вывод в консоль всех данных
+	// console.log(
+	// 	humidity,
+	// 	temp,
+	// 	grnd_level,
+	// 	description,
+	// 	feels_like,
+	// 	temp_max,
+	// 	temp_min,
+	// 	sunrise,
+	// 	wind
+	// );
 
-	drawVideo(data);
+	drawVideo(data); // вызов прорисовки видео
 
 	document.getElementById("sunrise").innerHTML = sunrise;
 	document.getElementById("wind").innerHTML = `${Math.round(wind)} `;
@@ -108,6 +117,7 @@ function drawWeather(data) {
 	)} км`;
 }
 
+//прорисовка видео в зависимости от описания погоды
 function drawVideo(data) {
 	var video = document.getElementById("myVideo");
 	var descriptionData = data.weather[0].main.toLowerCase();
@@ -129,5 +139,4 @@ function drawVideo(data) {
 	} else {
 		video.src = "video/sunny.mp4";
 	}
-	
 }
