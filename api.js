@@ -36,8 +36,8 @@ function getCityID() {
 
 //Получение погоды через его айди
 function weatherBalloon() {
-	// preloader видео
 
+	// preloader видео
 	getCityID().then((cityId) => {
 		console.log(cityId);
 		fetch(
