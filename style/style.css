@@ -164,4 +164,38 @@ main section .date {
 main section img {
   width: 26px;
   height: 26px;
+}
+
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background: #ffffff;
+  z-index: 1001;
+}
+.preloader .preloader__image {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  margin-top: -35px;
+  margin-left: -35px;
+  text-align: center;
+  animation: preloader-rotate 2s infinite linear;
+}
+@keyframes preloader-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.preloader .loaded_hiding {
+  transition: 0.3s opacity;
+  opacity: 0;
+}
+.preloader .loaded {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

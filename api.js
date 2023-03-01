@@ -1,9 +1,16 @@
 var key = "e671c5b57f027d000fa8db46a63cfd7b";
-var video = document.getElementById("myVideo");
+
+window.addEventListener("load", function () {
+	var preloader = document.getElementById("preloader");
+	preloader.style.display = "none";
+});
+
+window.onload = () => {
+	weatherBalloon();
+};
 
 function getCityID() {
 	const cityName = document.querySelector("input").value;
-
 	return fetch(
 		`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}`
 	)
@@ -11,10 +18,13 @@ function getCityID() {
 		.then((data) => {
 			const cityId = data.id;
 			console.log(`The ID of ${cityName} is ${cityId}`);
-
 			return cityId;
 		})
 		.catch();
+}
+
+function clearInput() {
+	document.getElementById("input-id").value = "";
 }
 
 function weatherBalloon() {
@@ -31,9 +41,7 @@ function weatherBalloon() {
 				document.getElementById("input-id").style.color = "black";
 				drawWeather(data);
 			})
-			.catch(
-				(error) => (document.getElementById("input-id").style.color = "red")
-			);
+			.catch(() => (document.getElementById("input-id").style.color = "red"));
 	});
 }
 
@@ -41,8 +49,8 @@ function submit() {
 	weatherBalloon();
 }
 
-function toCelc(i) {
-	return Math.round(parseFloat(i) - 273.15);
+function toCelc(n) {
+	return Math.round(parseFloat(n) - 273.15);
 }
 
 function drawWeather(data) {
@@ -55,7 +63,7 @@ function drawWeather(data) {
 	let feels_like = toCelc(data.main.feels_like); //как чувствуется
 	let city = data.name; // город
 	let visibility = data.visibility / 1000; // видимость
-	let rain = data.rain; // дождь
+
 	let wind = data.wind.gust;
 	if (wind === undefined) {
 		wind = 0;
@@ -82,6 +90,26 @@ function drawWeather(data) {
 		wind
 	);
 
+	drawVideo(data);
+
+	document.getElementById("sunrise").innerHTML = sunrise;
+	document.getElementById("wind").innerHTML = `${Math.round(wind)} `;
+	document.getElementById("temp").innerHTML = `${temp}°`;
+	document.getElementById(
+		"temp_max_min"
+	).innerHTML = `Макс: ${temp_max}°, Мин: ${temp_min}°`;
+	document.getElementById("humidity").innerHTML = `${humidity}%`;
+	document.getElementById("feels_like").innerHTML = ` ${feels_like}°`;
+	document.getElementById("grnd_level").innerHTML = `${grnd_level} `;
+	document.getElementById("description").innerHTML = description;
+	document.getElementById("city").innerHTML = city;
+	document.getElementById("visibility").innerHTML = `${Math.round(
+		visibility
+	)} км`;
+}
+
+function drawVideo(data) {
+	var video = document.getElementById("myVideo");
 	var descriptionData = data.weather[0].main.toLowerCase();
 
 	if (descriptionData.includes("rain")) {
@@ -101,24 +129,4 @@ function drawWeather(data) {
 	} else {
 		video.src = "video/sunny.mp4";
 	}
-
-	document.getElementById("sunrise").innerHTML = sunrise;
-	document.getElementById("wind").innerHTML = `${Math.round(wind)} `;
-	document.getElementById("temp").innerHTML = `${temp}°`;
-	document.getElementById(
-		"temp_max_min"
-	).innerHTML = `Макс: ${temp_max}°, Мин: ${temp_min}°`;
-	document.getElementById("humidity").innerHTML = `${humidity}%`;
-	document.getElementById("feels_like").innerHTML = ` ${feels_like}°`;
-	document.getElementById("grnd_level").innerHTML = `${grnd_level} `;
-	document.getElementById("description").innerHTML = description;
-	document.getElementById("city").innerHTML = city;
-	document.getElementById("visibility").innerHTML = `${Math.round(
-		visibility
-	)} км`;
 }
-
-window.onload = () => {
-	weatherBalloon();
-	console.log();
-};

@@ -11,12 +11,16 @@
 </head>
 
 <body>
+    <div class="preloader" id="preloader">
+        <img class="preloader__image" src="/img/loading-spinner-svgrepo-com.svg" alt="">
+    </div>
     <video autoplay muted loop playsinline id="myVideo">
         <source src="" type="video/mp4">
     </video>
     <header>
         <nav>
-            <input placeholder="Введите название города" type="text" id="input-id" value="Караганда" />
+            <input placeholder="Введите название города" type="text" id="input-id" value="Караганда"
+                onclick="clearInput()" />
             <button id="input_submit" onclick="submit()">Найти</button>
         </nav>
     </header>
@@ -62,9 +66,7 @@
         </div>
     </main>
     <footer>
-
     </footer>
-    <script src="script.js"></script>
     <script src="api.js"></script>
 </body>
 
