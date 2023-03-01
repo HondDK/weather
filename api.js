@@ -129,4 +129,5 @@ function drawVideo(data) {
 	} else {
 		video.src = "video/sunny.mp4";
 	}
+	
 }

@@ -17,8 +17,23 @@
 	font-family: "Inter", sans-serif;
 }
 body {
-	background-color: rgb(255, 255, 255);
+	height: 90%;
+	margin: 0 auto;
+	background-color: rgb(172, 169, 169);
 	color: rgb(0, 0, 0);
+}
+video {
+	opacity: 0;
+	animation: ani 2.5s forwards;
+
+	@keyframes ani {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
 }
 a {
 	text-decoration: none;
@@ -30,12 +45,15 @@ header {
 	font-size: 60px;
 
 	margin: 0 auto;
-	margin-bottom: 71px;
+	margin-top: 1%;
+	margin-bottom: 5%;
 }
 nav {
 	@extend %font-bold;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	font-size: 32px;
 	line-height: 39px;
 	font-style: normal;
@@ -65,6 +83,7 @@ nav {
 		width: 310px;
 		height: 90px;
 		font-size: 25px;
+		cursor: pointer;
 		&:hover {
 			transition: all 0.1s ease;
 			border: rgb(255, 255, 255);
@@ -72,10 +91,11 @@ nav {
 		}
 	}
 }
+
 main {
 	width: 60%;
 	margin: 0 auto;
-	@media (max-width: 900px) {
+	@media (max-width: 600px) {
 		width: 100%;
 	}
 	article {
@@ -89,7 +109,7 @@ main {
 		-webkit-border-radius: 25px 25px 25px 25px;
 		-moz-border-radius: 25px 25px 25px 25px;
 		border: 2px solid white;
-		margin-bottom: 71px;
+		margin-bottom: 10%;
 
 		h1 {
 			@extend %font-inter;
@@ -127,7 +147,10 @@ main {
 		grid-template-rows: 150px;
 		grid-row-gap: 15px;
 		grid-column-gap: 15px;
+		align-items: center;
+		justify-content: center;
 		margin: 0 auto;
+		height: 50%;
 		@media (max-width: 900px) {
 			grid-template-columns: repeat(3, 1fr);
 		}
