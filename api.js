@@ -36,7 +36,6 @@ function getCityID() {
 
 //Получение погоды через его айди
 function weatherBalloon() {
-
 	// preloader видео
 	getCityID().then((cityId) => {
 		console.log(cityId);
@@ -86,19 +85,6 @@ function drawWeather(data) {
 		.split("")
 		.slice(12, 17)
 		.join("");
-
-	//вывод в консоль всех данных
-	// console.log(
-	// 	humidity,
-	// 	temp,
-	// 	grnd_level,
-	// 	description,
-	// 	feels_like,
-	// 	temp_max,
-	// 	temp_min,
-	// 	sunrise,
-	// 	wind
-	// );
 
 	drawVideo(data); // вызов прорисовки видео
 

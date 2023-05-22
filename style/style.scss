@@ -44,10 +44,11 @@ header {
 	@extend %font-bold;
 	font-size: 60px;
 	margin: 0 auto;
-	margin-top: 25px;
+	padding: 15px;
 	margin-bottom: 5%;
 }
 nav {
+	opacity: 100%;
 	@extend %font-bold;
 	display: flex;
 	flex-direction: column;
@@ -61,7 +62,7 @@ nav {
 	height: 150px;
 
 	input {
-		opacity: 70%;
+		opacity: 100%;
 		@extend %font-bold;
 		text-align: center;
 		border-radius: 25px 25px 25px 25px;
@@ -74,6 +75,7 @@ nav {
 		margin-bottom: 15px;
 	}
 	button {
+		opacity: 100%;
 		@extend %font-bold;
 		border-radius: 25px 25px 25px 25px;
 		-webkit-border-radius: 25px 25px 25px 25px;
@@ -185,6 +187,29 @@ main {
 		img {
 			width: 26px;
 			height: 26px;
+		}
+	}
+}
+.footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+
+	z-index: 0;
+	background-color: #ffffff;
+	height: 30px;
+	padding: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #000000;
+	font-family: "Public Sans", sans-serif;
+	font-weight: 600;
+	opacity: 40%;
+	div {
+		display: flex;
+		p {
+			margin-right: 25px;
 		}
 	}
 }
